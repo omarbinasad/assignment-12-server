@@ -7,7 +7,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 // midleware;
 
@@ -53,14 +53,7 @@ async function run() {
       res.json(result);
     });
     // Book Confirm
-    // app.post("/addOrder", async (req, res) => {
-    //   const service = req.body;
-    //   console.log("hit the post api", order);
-
-    //   const result = await ordersCollection.insertOne(order);
-    //   console.log(result);
-    //   res.json(result);
-    // });
+   
     app.post("/addOrder", (req, res) => {
       console.log(req.body);
       ordersCollection.insertOne(req.body).then((result) => {
